@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const analyzeBtn = document.getElementById('analyzeBtn');
     const previewImgEl = document.getElementById('preview-img');
     const placeholderEl = document.getElementById('placeholder');
+    const resultsEl = document.getElementById('results');
     const STORAGE_KEY = 'capturedRegion';
 
     function showImage(dataUrl) {
@@ -51,8 +52,46 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        resultsEl.innerHTML ='<p id="placeholder">Analyzing image...</p>';
+
+
         const data = await sendImageForAnalysis(previewImgEl.src);
-        
-        data.forEach
+        resultsEl.innerHTML = '';
+
+        const organisms = data.response.organisms
+
+        if (organisms.length === 0) {
+            resultsEl.innerHTML = '<p id="placeholder">No organisms found.</p>';
+            return;
+        }
+
+        organisms.forEach(org => {
+            // Display Card
+            const displayCard = document.createElement('div');
+            displayCard.className = 'organism-displayCard';
+
+            // Title
+            const title = document.createElement('h3');
+            title.className = 'organism-title';
+            title.textContent = org.commonName + (org.scientificName ? ` (Scientifically: ${org.scientificName})` : '');
+            displayCard.appendChild(title);
+
+            // Traits
+            if (org.traits && org.traits.length > 0) {
+                const traitList = document.createElement('ul');
+                traitList.className = 'trait-list';
+
+                org.traits.forEach(trait => {
+                    // List Items
+                    const liEl = document.createElement('li');
+                    liEl.innerHTML = `<strong>${trait.traitName}:</strong> ${trait.phenotype} (Genotype: ${trait.genotype} | ${trait.dominanceExpression})`;
+                    traitList.appendChild(liEl);
+                });
+
+                displayCard.appendChild(traitList);
+            }
+
+            resultsEl.appendChild(displayCard);
+        });
     });
 });

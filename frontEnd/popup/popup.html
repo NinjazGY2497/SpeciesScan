@@ -5,10 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpeciesScan</title>
   <link rel="stylesheet" href="popup.css">
+  <style>
+    #app {
+      position: relative;
+    }
+
+    #logo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
 
   <div id="app">
+
+    <img id="logo" src="logo.webp" alt="SpeciesScan Logo">
 
     <h1>SpeciesScan</h1>
 
@@ -20,6 +36,8 @@
     </div>
 
   </div>
+
+  <div id="results"></div>
 
   <script type="module" src="popup.js"></script>
 

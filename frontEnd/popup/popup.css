@@ -32,11 +32,13 @@ body {
     font-weight: 1000;
     padding: 20px;
     box-sizing: border-box;
-    border: 10px solid #ede9fe;
+    /* border: 10px solid #ede9fe; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 .container {
@@ -52,13 +54,12 @@ h1 {
     margin-bottom: 24px;
 }
 
-
-
 #app {
     width: 100%;
     max-width: 800px;
     text-align: center;
     animation: fadeIn 0.4s ease both;
+    flex-shrink: 0;
 }
 
 #capture-zone {
@@ -80,7 +81,7 @@ h1 {
     -webkit-background-clip: text;
     background-clip: text;
     font-size: 0.95rem;
-    margin: 0;
+    margin-bottom: 15px;
 }
 
 
@@ -117,4 +118,44 @@ h1 {
 #captureBtn:active,
 #analyzeBtn:active {
     transform: scale(0.96);
+}
+
+/* Styling for the Results */
+#results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    text-align: left;
+    flex-shrink: 0; /* ADDED: Stop the results wrapper from squishing */
+}
+
+.organism-displayCard {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; /* ADDED: Force the border to wrap all the text */
+    margin-bottom: 5px;
+}
+
+.organism-title {
+    margin: 0 0 12px 0;
+    font-size: 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 6px;
+}
+
+.trait-list {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.trait-list li {
+    margin-bottom: 8px;
 }
