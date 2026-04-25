@@ -5,7 +5,7 @@ class Trait(BaseModel):
     model_config = ConfigDict(extra='forbid') # Don't change to camel case must be snake
     traitName: str
     phenotype: str
-    dominanceExpression: Literal["Dominant", "Recessive"]
+    dominanceExpression: Literal["Dominant", "Recessive"] = Field(description="May ONLY input dominant or recessive. Complete/Incomplete/Codominance is for a different field.")
     dominanceType: Literal["Complete Dominance", "Incomplete Dominance", "Codominance"]
 
     genotype: str = Field(description="The Mendelian letters representing the alleles (ex:aa, Aa). If the 2nd allele cannot be determined from its phenotype, put an underscore (ex: A_).")

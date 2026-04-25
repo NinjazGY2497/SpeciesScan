@@ -40,7 +40,7 @@ def requestGroq(img):
         - For incomplete dominance or codominance, use the heterozygous format for the "blended" phenotype (ex:, 'Aa') and homozygous formats for ('AA' or 'aa').
         """
 
-        USER_PROMPT = """Identify the organisms in this image and extract their genetic data. Populate the ResponseSchema correctly, and include 4-5 traits in total across all the organisms."""
+        USER_PROMPT = """Identify the organisms in this image and extract their genetic data. Populate the ResponseSchema correctly, and include 4-5 traits in total across all the organisms. STRICTLY FOLLOW SCHEMA, DO NOT DISOBEY SCHEMA."""
 
         chatCompletion = client.chat.completions.create(
             messages=[
