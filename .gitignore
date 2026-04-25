@@ -1,3 +1,5 @@
 .env
 References&Learning/
 .vscode/
+__pychache__/
+venv/
