@@ -1,30 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const captureBtn = document.getElementById('captureBtn');
     const analyzeBtn = document.getElementById('analyzeBtn');
-    const previewImg = document.getElementById('preview-img');
-    const placeholder = document.getElementById('placeholder');
-    const storageKey = 'capturedRegion';
+    const previewImgEl = document.getElementById('preview-img');
+    const placeholderEl = document.getElementById('placeholder');
+    const STORAGE_KEY = 'capturedRegion';
 
-    const showImage = (dataUrl) => {
-        previewImg.src = dataUrl;
-        previewImg.style.display = 'block';
-        placeholder.style.display = 'none';
+    function showImage(dataUrl) {
+        previewImgEl.src = dataUrl;
+        previewImgEl.style.display = 'block';
+        placeholderEl.style.display = 'none';
     };
 
-    chrome.storage.local.get(storageKey, (data) => {
-        if (data[storageKey]) {
-            showImage(data[storageKey]);
+    chrome.storage.local.get(STORAGE_KEY, (data) => {
+        imgData = data[STORAGE_KEY];
+        if (imgData) {
+            showImage(imgData);
         }
     });
 
     chrome.storage.onChanged.addListener((changes, areaName) => {
-        if (areaName === 'local' && changes[storageKey]?.newValue) {
-            showImage(changes[storageKey].newValue);
+        if (areaName === 'local' && changes[STORAGE_KEY]?.newValue) {
+            showImage(changes[STORAGE_KEY].newValue);
         }
     });
 
     captureBtn.addEventListener('click', () => {
-        chrome.runtime.sendMessage({ action: 'start-region-selection' }, (response) => {
+        chrome.runtime.sendMessage({action: 'START_REGION_SELECTION'}, (response) => {
             if (chrome.runtime.lastError) {
                 alert('Unable to start region selection: ' + chrome.runtime.lastError.message);
                 return;
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     analyzeBtn.addEventListener('click', () => {
-        if (previewImg.style.display === 'none') {
+        if (previewImgEl.style.display === 'none') {
             alert('Please capture an image first.');
             return;
         }

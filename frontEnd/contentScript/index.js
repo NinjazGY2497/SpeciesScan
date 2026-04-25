@@ -5,7 +5,7 @@ let startY = 0;
 let isSelecting = false;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'start-region-selection') {
+    if (message.action === 'START_REGION_SELECTION') {
         startSelectionOverlay();
         sendResponse({ status: 'overlay-shown' });
     }

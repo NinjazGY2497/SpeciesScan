@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'start-region-selection') {
+    if (message.action === 'START_REGION_SELECTION') {
         handleRegionSelection().then(sendResponse).catch((err) => {
             sendResponse({ status: 'error', error: err.message });
         });
@@ -35,7 +35,7 @@ async function handleRegionSelection() {
     const tabId = activeTab.id;
 
    
-    const alreadyReady = await sendMessageToTab(tabId, { action: 'start-region-selection' });
+    const alreadyReady = await sendMessageToTab(tabId, { action: 'START_REGION_SELECTION' });
     if (alreadyReady?.status === 'overlay-shown') {
         return { status: 'started' };
     }
@@ -47,7 +47,7 @@ async function handleRegionSelection() {
     
     await sleep(100);
 
-    const response = await sendMessageToTab(tabId, { action: 'start-region-selection' });
+    const response = await sendMessageToTab(tabId, { action: 'START_REGION_SELECTION' });
     if (response?.status === 'overlay-shown') {
         return { status: 'started' };
     }
