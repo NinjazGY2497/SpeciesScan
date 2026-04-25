@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 org.traits.forEach(trait => {
                     // List Items
                     const liEl = document.createElement('li');
-                    liEl.innerHTML = `<strong>${trait.traitName}:</strong> ${trait.phenotype} (Genotype: ${trait.genotype} | ${trait.dominanceExpression})`;
+                    liEl.innerHTML = `<strong>${trait.traitName}:</strong> ${trait.phenotype} (Genotype: ${trait.genotype} | ${trait.dominanceExpression}, which is ${trait.dominanceType})`;
                     traitList.appendChild(liEl);
                 });
 
