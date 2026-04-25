@@ -1,3 +1,5 @@
+import { sendImageForAnalysis } from './requestBackend.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const captureBtn = document.getElementById('captureBtn');
     const analyzeBtn = document.getElementById('analyzeBtn');
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     chrome.storage.local.get(STORAGE_KEY, (data) => {
-        imgData = data[STORAGE_KEY];
+        let imgData = data[STORAGE_KEY];
         if (imgData) {
             showImage(imgData);
         }
@@ -43,11 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    analyzeBtn.addEventListener('click', () => {
+    analyzeBtn.addEventListener('click', async () => {
         if (previewImgEl.style.display === 'none') {
             alert('Please capture an image first.');
             return;
         }
-        alert('Analysis feature not implemented yet.');
+
+        const data = await sendImageForAnalysis(previewImgEl.src);
+        
+        data.forEach
     });
 });

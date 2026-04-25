@@ -19,11 +19,10 @@ client = Groq(api_key=GROQ_KEY)
 app = Flask(__name__)
 CORS(app)
 
-def imgToBase64URL(img):
-    imgData = img.read()
-    imgBase64 = base64.b64encode(imgData).decode("utf-8")
-    imgURL = f"data:image/png;base64,{imgBase64}"
-    return imgURL
+# def imgToBase64URL(img):
+#     imgData = img.read()
+#     imgBase64 = base64.b64encode(imgData).decode("utf-8")
+#     return f"data:image/png;base64,{imgBase64}"
 
 def requestGroq(img):
     try:
@@ -48,7 +47,7 @@ def requestGroq(img):
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": [
                     {"type": "text", "text": USER_PROMPT},
-                    {"type": "image_url", "image_url": {"url": imgToBase64URL(img)}},
+                    {"type": "image_url", "image_url": {"url": img}},
                 ]}
             ],
             model="meta-llama/llama-4-scout-17b-16e-instruct",
@@ -80,9 +79,8 @@ def getAIResponse():
     try:
         incomingData = request.get_json()
         img = incomingData.get("img")
-        print(f"**main.py** - INFO - Incoming Data: {incomingData}")
-    except:
-        print(f"**main.py** - ERROR - Failed to parse incoming JSON: {promptData}")
+    except Exception as e:
+        print(f"**main.py** - ERROR - Failed to parse incoming JSON: {incomingData} | Error: {e}")
         raise
 
     response = requestGroq(img)
