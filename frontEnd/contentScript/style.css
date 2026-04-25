@@ -1,0 +1,28 @@
+.region-selection-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    cursor: crosshair;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.selection-box {
+    position: absolute;
+    border: 2px dashed #80d8ff;
+    background: rgba(48, 161, 255, 0.12);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.selection-instructions {
+    margin: 16px;
+    padding: 10px 14px;
+    background: rgba(17, 24, 39, 0.9);
+    color: #ffffff;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    pointer-events: none;
+    user-select: none;
+}
