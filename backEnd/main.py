@@ -19,11 +19,6 @@ client = Groq(api_key=GROQ_KEY)
 app = Flask(__name__)
 CORS(app)
 
-# def imgToBase64URL(img):
-#     imgData = img.read()
-#     imgBase64 = base64.b64encode(imgData).decode("utf-8")
-#     return f"data:image/png;base64,{imgBase64}"
-
 def requestGroq(img):
     try:
         SYSTEM_PROMPT = """
@@ -84,7 +79,6 @@ def getAIResponse():
         raise
 
     response = requestGroq(img)
-    print(f"**main.py** - INFO - Groq Response: {response}")
 
     return jsonify({"response": response})
 
