@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeciesScan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="headingContainer">
+      <img class="logo" id="logo1" src="logo.png" alt="SpeciesScan Logo">
+      <h1>SpeciesScan</h1>
+      <img class="logo" id="logo2" src="logo.png" alt="SpeciesScan Logo">
+    </div>
+
+    <div id="capture-zone">
+      <p id="placeholder">No Image Uploaded Yet</p>
+      <img id="preview-img" src="" alt="Captured region">
+      <button id="uploadBtn">Upload Image</button>
+      <input type="file" id="uploadInput" accept="image/*" style="display: none;"> <!-- Supposed to be hidden -->
+      <button id="analyzeBtn">Analyze</button>
+    </div>
+  </div>
+
+  <div id="results" style="display: none;"></div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>
