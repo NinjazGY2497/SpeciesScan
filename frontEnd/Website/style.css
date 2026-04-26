@@ -107,7 +107,7 @@ h1 {
 #uploadBtn,
 #analyzeBtn {
     padding: 10px 28px;
-    border: 2px solid #6be68a;
+    border: 2px solid #3dde65;
     border-radius: 30px;
     background: transparent;
     color: #ffffff;
@@ -120,7 +120,7 @@ h1 {
 
 #uploadBtn:hover,
 #analyzeBtn:hover {
-    background: #48f573;
+    background: #3dde65;
     color: #fff;
     font-weight: 1000;
 }
