@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpeciesScan</title>
+  <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +18,16 @@
     <div id="capture-zone">
       <p id="placeholder">No Image Uploaded Yet</p>
       <img id="preview-img" src="" alt="Captured region">
+
       <button id="uploadBtn">Upload Image</button>
       <input type="file" id="uploadInput" accept="image/*" style="display: none;"> <!-- Supposed to be hidden -->
+      
       <button id="analyzeBtn">Analyze</button>
+      <div class="checkbox-container">
+        <input type="checkbox" id="compressionCheckbox" checked>
+        <label for="compressionCheckbox">Compress Image</label>
+        <span class="compressionInfoCircle" title="Compressing the image before sending to AI uses less tokens.&#10;Enable to avoid risk of hitting rate limits; disable if organisms are not clearly visible.">i</span>
+      </div>
     </div>
   </div>
 

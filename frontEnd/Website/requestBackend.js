@@ -1,4 +1,7 @@
 const BACKEND_URL = "http://localhost:2497/ai-response"
+const compressionCheckbox = document.querySelector('#compressionCheckbox');
+
+let compressionEnabled = true;
 
 export async function sendImageForAnalysis(imageDataUrl) {
     const response = await fetch(BACKEND_URL, {
@@ -9,3 +12,7 @@ export async function sendImageForAnalysis(imageDataUrl) {
 
     return response.json();
 }
+
+compressionCheckbox.addEventListener('change', () => {
+    compressionEnabled = compressionCheckbox.checked;
+});

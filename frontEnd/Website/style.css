@@ -190,5 +190,29 @@ h1 {
 }
 
 #logo1 {
-    margin-right: 9px;
+    margin-right: 10px;
+}
+
+/* Compression/Checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    justify-content: center;
+}
+
+#compressionCheckbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #3dde65;
+}
+
+.compressionInfoCircle {
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 17px;
+    height: 17px;
+    font-size: 14px;
+    margin-left: 3px;
 }
