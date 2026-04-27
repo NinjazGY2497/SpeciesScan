@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:2497/ai-response"
+const BACKEND_URL = "https://legacyhackathoncrewraag.pythonanywhere.com/speciesscan/ai-response"
 
 export async function sendImageForAnalysis(imageDataUrl) {
     const response = await fetch(BACKEND_URL, {

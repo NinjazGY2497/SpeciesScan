@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:2497/ai-response"
+const BACKEND_URL = "https://legacyhackathoncrewraag.pythonanywhere.com/speciesscan/ai-response"
 const compressionCheckbox = document.querySelector('#compressionCheckbox');
 
 let compressionEnabled = true;
@@ -28,6 +28,7 @@ async function compressImage(dataUrl, maxWidth=500, quality=0.7) {
             if (width > maxWidth) {
                 height = Math.round((height * maxWidth) / width);
                 width = maxWidth;
+                console.log(`Compressed image to ${width}x${height}`);
             }
 
             canvas.width = width;
@@ -36,8 +37,6 @@ async function compressImage(dataUrl, maxWidth=500, quality=0.7) {
             // Draw the resized image to the canvas
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
-
-            console.log(`Compressed image to ${width}x${height}`);
 
             // Export as JPEG with compression
             const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
